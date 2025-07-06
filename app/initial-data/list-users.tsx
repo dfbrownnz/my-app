@@ -9,11 +9,11 @@ import React from 'react';
 export default function ListUsers() {
   const [count, setCount] = React.useState(0);
 
-  const { data   } = useQuery({
+  const { data } = useQuery({
     queryKey: ['initial-users'],
     queryFn: () => getUsers(),
     // initialData: users,
-    staleTime: 5 * 1000,  
+    staleTime: 5 * 1000,
   });
 
   return (
@@ -39,11 +39,8 @@ export default function ListUsers() {
           }}
         >
           {/* <pre>{JSON.stringify(data  , null, 2)}</pre> */}
-          {data.map((user : any ) => (
-  
-            
-              <h3>{user.id} {user.name} {user.email}</h3>
-          
+          {data && data.map((user: any) => (
+            <h3>{user.id} {user.name} {user.email}</h3>
           ))}
         </div>
       }
